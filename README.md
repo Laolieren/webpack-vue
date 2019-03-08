@@ -40,7 +40,6 @@ module.exports = {
 ```
 在vue中我们都会通过npm run dev来开启服务器，npm run build来打包文件，那么我们就需要在package.json文件中配置命令行。
 
-![json配置script](img/jsonscript.jpg)
 
 执行npm run dev时，我们需要安装通过npm install webpack-dev-server --save-dev 来安装这个npm包,安装完成后就可以启动一个服务器，在线预览我们的项目。
 
@@ -50,11 +49,9 @@ module.exports = {
 
 需要安装一下几个npm包:
 
-![vue安装包](img/package.jpg)
 
 目录结构如下(参考项目文件夹)：
 
-![目录结构](img/constructor.jpg)
 
 我们先在webpack.config.js中配置可处理.vue后缀的文件
 
@@ -85,7 +82,6 @@ module.exports={
 
 我们在使用vue-cli生成的项目中，可以看到webpack.base.config.js，webpack.dev.config.js和webpack.prod.config.js，这三个文件分别对应的是开发环境和生成环境共同的配置，开发环境的配置，生产环境的配置。需要我们在package.json命令行中指定为我们需要用哪个配置文件。
 
-![指定使用哪个配置文件](img/peizhi.jpg)
 
 因为开发环境和生产环境有共同的配置，所以我们可以使用webpack-merge去合并(npm install webpack-merge --save-dev);
 
@@ -198,7 +194,6 @@ npm install css-loader style-loader less less-loader -D
 
 这种方式打包后的文件是内嵌到html里面的style样式，我们需要将css提取出来形成单独的文件。
 
-![css打包](img/css1.png)
 
 拆分css 我们就需要extract-text-webpack-plugin这个插件，先安装一下这个插件；
 
@@ -273,7 +268,6 @@ plugins:[
 
 运行 npm run dev后，打包后的文件css文件就被单独打包到style.css的文件中去了。
 
-![打包提取后的css文件](img/css2.png)
 
 完整的webpack.base.conf.js在根目录下的build文件夹下。
 
