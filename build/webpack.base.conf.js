@@ -6,23 +6,23 @@ const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     //entry:'./src/main.js',
     entry: {
-        app: ["babel-polyfill",'./src/main.js']//vuex依赖于promise，所以需要babel-polyfill
+        app: ["babel-polyfill", './src/main.js']//vuex依赖于promise，所以需要babel-polyfill
     },
-    output:{
-        filename:'static/js/[name].js',
+    output: {
+        filename: 'static/js/[name].js',
         // chunkFilename: '[name].js',//它决定非入口 chunk 的名称
-        path:path.resolve('dist')
+        path: path.resolve('dist')
     },
-    module:{
-        rules:[
+    module: {
+        rules: [
             {
-                test:/\.vue$/,
-                use:{
-                    loader:"vue-loader",
-                    options:{
-                        loaders:{
-                            css:ExtractTextWebpackPlugin.extract({
-                                use:'css-loader'
+                test: /\.vue$/,
+                use: {
+                    loader: "vue-loader",
+                    options: {
+                        loaders: {
+                            css: ExtractTextWebpackPlugin.extract({
+                                use: 'css-loader'
                             }),
                             less: ExtractTextWebpackPlugin.extract({
                                 use: ["css-loader", "less-loader"]
@@ -33,16 +33,16 @@ module.exports = {
             },
             //支持css
             {
-                test:/\.css$/,
-                use:ExtractTextWebpackPlugin.extract({
-                    use:['css-loader?minimize','postcss-loader'],//这种方式引入css文件就不需要style-loader了
+                test: /\.css$/,
+                use: ExtractTextWebpackPlugin.extract({
+                    use: ['css-loader?minimize', 'postcss-loader'],//这种方式引入css文件就不需要style-loader了
                 })
                 //use:['style-loader','css-loader']//从右往左解析
             },
             {
-                test:/\.less$/,
-                use:ExtractTextWebpackPlugin.extract({
-                    use:['css-loader?minimize','less-loader','postcss-loader'],
+                test: /\.less$/,
+                use: ExtractTextWebpackPlugin.extract({
+                    use: ['css-loader?minimize', 'less-loader', 'postcss-loader'],
                 })
                 //use:['style-loader','css-loader','less-loader'],//
             },
@@ -71,24 +71,24 @@ module.exports = {
             {
                 test: /\.js$/,
                 use: {
-                    loader:"babel-loader"
+                    loader: "babel-loader"
                 },
-                include: [path.resolve(__dirname,'..', 'src')]
+                include: [path.resolve(__dirname, '..', 'src')]
             }
         ]
     },
-    plugins:[
+    plugins: [
         new HtmlWebpackPlugin({
-            template:'index.html',
-            filename:'index.html',
-            hash:true,
-            minify:{
-                removeAttributeQuotes:true,
+            template: path.join(__dirname, '../src/index.html'),
+            filename: 'index.html',
+            hash: true,
+            minify: {
+                removeAttributeQuotes: true,
                 minifyJS: true,
             }
         }),
         new ExtractTextWebpackPlugin({
-            filename:'static/css/[name].css',
+            filename: 'static/css/[name].css',
             // Setting the following option to `false` will not extract CSS from codesplit chunks.
             // Their CSS will instead be inserted dynamically with style-loader when the codesplit chunk has been loaded by webpack.
             // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`, 
