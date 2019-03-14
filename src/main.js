@@ -11,7 +11,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN' // lang i18n
 import echarts from 'echarts'
 import Vuepreview from 'vue-preview'
-
+import $ from 'jquery'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
 Vue.prototype.$echarts = echarts;
 
 Vue.use(VueRouter)
@@ -19,6 +21,7 @@ Vue.use(VueResource)
 Vue.use(Mint)
 Vue.use(Vuepreview)
 Vue.use(ElementUI,{ zhLocale });
+
 
 const router = new VueRouter(routerConfig);
 new Vue({

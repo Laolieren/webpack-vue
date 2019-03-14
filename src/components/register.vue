@@ -1,5 +1,7 @@
 <template>
-    <h1>这是注册组件{{$store.state.count}}</h1>
+    <div>
+        <h1>这是注册组件{{$store.state.count}}</h1>
+    </div>
 </template>
 
 <script>

@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
@@ -52,17 +53,15 @@ module.exports = {
                 use: [{
                     loader: "url-loader",
                     options: {
-                        limit: 10000,
                         name: 'static/img/[name].[hash:7].[ext]'    // 将图片都放入 img 文件夹下，[hash:7]防缓存
                     }
                 }]
             },
             {
-                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                test: /\.(woff2?|woff|eot|ttf|otf)(\?.*)?$/,
                 use: [{
                     loader: "url-loader",
                     options: {
-                        limit: 10000,
                         name: 'static/fonts/[name].[hash:7].[ext]'    // 将字体放入 fonts 文件夹下
                     }
                 }]
@@ -78,6 +77,11 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+        }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '../src/index.html'),
             filename: 'index.html',
