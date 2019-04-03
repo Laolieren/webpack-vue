@@ -1,5 +1,11 @@
 module.exports = {
     plugins: [
-      require('autoprefixer')
-    ]
-  }
+        require('autoprefixer')
+    ],
+    "plugins": {
+        "postcss-pxtorem": {
+            "rootValue": 32,
+            "propList": ["*"]
+        }
+    }
+}

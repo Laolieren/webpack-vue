@@ -14,6 +14,7 @@ import Vuepreview from 'vue-preview'
 import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
+import './rem.js'
 Vue.prototype.$echarts = echarts;
 
 Vue.use(VueRouter)
